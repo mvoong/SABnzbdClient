@@ -1,0 +1,15 @@
+I've set up some server details for you. On the Servers screen, tap Edit and tap on "My Server"
+
+Hostname: home.michaelvoong.com
+Port: 9990
+HTTPS: on
+API key: 91039db68735f6eb4c2b75abf6b3be39
+
+Here are some suggested search terms using BinSearch:
+
+Ubuntu LTS i386
+Gentoo
+OpenOffice 3.3
+Gimp Portable
+
+Feel free to start a few downloads. Thank you so much!

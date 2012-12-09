@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="SCCategory" representedClassName="SCCategory" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="downloadItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SCDownloadItem" inverseName="category" inverseEntity="SCDownloadItem" syncable="YES"/>
+        <relationship name="server" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SCServer" inverseName="categories" inverseEntity="SCServer" syncable="YES"/>
+    </entity>
+    <entity name="SCDownloadItem" representedClassName="SCDownloadItem" syncable="YES">
+        <attribute name="averageAge" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eta" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="filename" attributeType="String" syncable="YES"/>
+        <attribute name="index" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nzbId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="paused" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="priority" attributeType="String" syncable="YES"/>
+        <attribute name="script" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sizeMB" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="sizeRemainingMB" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="status" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeRemaining" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unpackOperations" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="category" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SCCategory" inverseName="downloadItems" inverseEntity="SCCategory" syncable="YES"/>
+        <relationship name="server" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SCServer" inverseName="downloadItems" inverseEntity="SCServer" syncable="YES"/>
+    </entity>
+    <entity name="SCHistoryItem" representedClassName="SCHistoryItem" syncable="YES">
+        <attribute name="actionLine" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category" attributeType="String" syncable="YES"/>
+        <attribute name="completed" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="failMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="nzbId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="size" attributeType="String" syncable="YES"/>
+        <attribute name="status" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="server" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SCServer" inverseName="historyItems" inverseEntity="SCServer" syncable="YES"/>
+    </entity>
+    <entity name="SCNZBResult" representedClassName="SCNZBResult" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comments" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="group" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasNFO" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hits" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indexDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="nzbId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="region" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="usenetDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="webLink" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="account" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SCSearchAccount" inverseName="results" inverseEntity="SCSearchAccount" syncable="YES"/>
+    </entity>
+    <entity name="SCScript" representedClassName="SCScript" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SCSearchAccount" representedClassName="SCSearchAccount" syncable="YES">
+        <attribute name="apiKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="displayIndex" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="enableHTTPS" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="enableSceneName" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="key" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verified" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="availableFilterCategories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SCSearchFilterCategory" inverseName="account" inverseEntity="SCSearchFilterCategory" syncable="YES"/>
+        <relationship name="filterItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SCSearchFilterItem" inverseName="searchAccounts" inverseEntity="SCSearchFilterItem" syncable="YES"/>
+        <relationship name="results" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SCNZBResult" inverseName="account" inverseEntity="SCNZBResult" syncable="YES"/>
+    </entity>
+    <entity name="SCSearchFilterCategory" representedClassName="SCSearchFilterCategory" syncable="YES">
+        <attribute name="editable" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="key" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="orderIndex" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <relationship name="account" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SCSearchAccount" inverseName="availableFilterCategories" inverseEntity="SCSearchAccount" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SCSearchFilterItem" inverseName="category" inverseEntity="SCSearchFilterItem" syncable="YES"/>
+    </entity>
+    <entity name="SCSearchFilterItem" representedClassName="SCSearchFilterItem" syncable="YES">
+        <attribute name="displayIndex" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="value" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="category" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SCSearchFilterCategory" inverseName="items" inverseEntity="SCSearchFilterCategory" syncable="YES"/>
+        <relationship name="searchAccounts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SCSearchAccount" inverseName="filterItems" inverseEntity="SCSearchAccount" syncable="YES"/>
+    </entity>
+    <entity name="SCServer" representedClassName="SCServer" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="apiKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="enableHTTPS" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="hostname" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastUpdated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="port" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SCCategory" inverseName="server" inverseEntity="SCCategory" syncable="YES"/>
+        <relationship name="downloadItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SCDownloadItem" inverseName="server" inverseEntity="SCDownloadItem" syncable="YES"/>
+        <relationship name="historyItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SCHistoryItem" inverseName="server" inverseEntity="SCHistoryItem" syncable="YES"/>
+        <relationship name="status" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="SCServerStatus" inverseName="server" inverseEntity="SCServerStatus" syncable="YES"/>
+    </entity>
+    <entity name="SCServerStatus" representedClassName="SCServerStatus" syncable="YES">
+        <attribute name="currentSpeed" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="paused" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="status" attributeType="String" syncable="YES"/>
+        <relationship name="server" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SCServer" inverseName="status" inverseEntity="SCServer" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="SCCategory" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="SCDownloadItem" positionX="160" positionY="192" width="128" height="285"/>
+        <element name="SCHistoryItem" positionX="160" positionY="192" width="128" height="180"/>
+        <element name="SCNZBResult" positionX="160" positionY="192" width="128" height="285"/>
+        <element name="SCScript" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="SCSearchAccount" positionX="160" positionY="192" width="128" height="225"/>
+        <element name="SCSearchFilterCategory" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="SCSearchFilterItem" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="SCServer" positionX="160" positionY="192" width="128" height="225"/>
+        <element name="SCServerStatus" positionX="160" positionY="192" width="128" height="90"/>
+    </elements>
+</model>

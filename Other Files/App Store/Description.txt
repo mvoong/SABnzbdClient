@@ -1,0 +1,38 @@
+This is the easiest and slickest way to search and download binary files from Usenet on your iPhone or iPod Touch with SABnzbd.
+
+This has been built to be a very stable and fast app - it will not crash every few minutes like some other SABnzbd apps.
+
+Features:
+
+* Search for binaries using your favourite NZB indexers
+* Find recent binaries using NZBMatrix RSS feeds
+* Sort search results by hits, date, size or name
+* Filter searches by category (NZBMatrix)
+* View cover artwork (NZBMatrix)
+* Jump to title in IMDB
+* Start downloads and organise by category
+* Quickly add downloads by long-pressing the result
+* View and delete your download history
+* Manage multiple SABnzbd servers
+* Change download category, priority and postprocessing script
+* Pause your download queue
+* Set a speed limit on your download queue
+* Cancel downloads
+* Reorder downloads
+* HTTPS support
+* FREE regular updates
+
+This version supports the popular NZBMatrix and BinSearch. Based on popular request, I will add your favourite indexer for FREE!
+
+Please note that this application does not connect directly to Usenet. You need a working SABnzbd setup.
+
+SABnzbd setup guide: http://wiki.sabnzbd.org/quick-setup
+Download SABnzbd: http://sabnzbd.org/download/
+
+Tested on SABnzbd 0.6.5.
+
+Coming soon:
+
+* More server info including stop/start
+* Other indexer integration (let me know which ones)
+* Translations
